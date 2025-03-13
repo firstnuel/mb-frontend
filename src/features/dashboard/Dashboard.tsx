@@ -53,7 +53,7 @@ const Dashboard = () => {
       </div>
       <div className="show-box-div">
         <ShowBox
-          tittleIcon={icons.receipt}
+          tittleIcon={icons.profit}
           title='Total Sales Amount'
           amount={formattedNumber(data?.totalSales ?? []) as string}
           currency={business?.currency?? 'USD'}
@@ -62,7 +62,7 @@ const Dashboard = () => {
           up={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) > 0}
         />
         <ShowBox
-          tittleIcon={icons.receipt}
+          tittleIcon={icons.categories}
           title='Total Product Sales'
           amount={sumNumber(data?.totalProductSales ?? []) }
           unit='Items'
