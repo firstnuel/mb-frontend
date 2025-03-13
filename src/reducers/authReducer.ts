@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { AuthState, LoginData, RegisterData, passwordData } from '../types/auth'
-import { authService } from '@services/authService'
+import { authService, setToken } from '@services/authService'
 import { persistor, RESET_ALL } from '../store'
 
 
@@ -16,6 +16,8 @@ const initialState: AuthState = {
 }
 
 export const fetchUser = createAsyncThunk( 'auth/fetchUser', async () => {
+  const userToken = localStorage.getItem('userToken')
+  if (userToken) setToken(userToken)
 
   const response = await authService.getUser()
   if (response.status !== 200) {
@@ -30,7 +32,9 @@ export const login = createAsyncThunk('auth/loginUser', async (userData: LoginDa
   if (response.status !== 200) {
     throw new Error(response.data.message)
   }
-  const userToken = ''
+  const userToken = response.data.token
+  localStorage.setItem('userToken', userToken)
+  setToken(userToken)
   return userToken
 })
 
@@ -87,8 +91,9 @@ const authSlice = createSlice({
       state.loading = true
       state.error = null
     })
-    builder.addCase(login.fulfilled, (state) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       state.loading = false
+      state.userToken = action.payload
       state.error = null
     })
     builder.addCase(login.rejected, (state, action) => {
