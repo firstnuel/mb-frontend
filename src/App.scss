@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('bootstrap/dist/css/bootstrap.min.css');
+
+:root {
+  --primary-color: #2D71F8;
+  --light-blue: #F0F5FF;
+  --dark-blue: #94b3ef;
+  --secondary-color: #FC4A4A;
+  --secondary-red: #FEF6F3;
+  --tertiary-color: #1C8370;
+  --light-green: #d7f1df;
+  --dark-color: #1A1A1A;
+  --light-color: #F9F9F9;
+  --white-color: #ffffff;
+  --light-gray: #F8F8F8;;
+  --light-black: #636363;;
+  --dark-gray: #898989;
+  --svg-fill-color: black;
+  --svg-stroke-color: none;
+  --font-family: 'Urbanist', sans-serif;
+  --light-purple: #2D71F8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-weight: 400;
+}
+
+
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --svg-fill-color: white;
+      --svg-stroke-color: gray;
+    }
+    svg {
+      .main-icons {
+        fill: var(--primary-color)
+      }
+    }
+  }
+
+svg {
+    fill: var(--svg-fill-color);
+    stroke: var(--svg-stroke-color);
+}
+

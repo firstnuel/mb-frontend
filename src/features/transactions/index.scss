@@ -1,0 +1,35 @@
+table > tbody > tr > td.paid {
+    color: var(--tertiary-color);
+}
+table > tbody > tr > td.unpaid {
+    color: var(--secondary-color);
+}
+
+tr > td.actions {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+div.head-info > input {
+    width: 40%;
+}
+
+.actn-btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+}
+
+.top {
+    border-bottom: 2px solid var(--light-gray);
+    padding-right: 1rem;
+}
+
+.arr-icon-div {
+
+    img {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
