@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from 'axios'
+import { Token } from './authService'
 
 class LogsService {
   private readonly BASE_PATH: string = import.meta.env.VITE_API_URL
@@ -12,6 +13,14 @@ class LogsService {
       baseURL: this.BASE_PATH,
       withCredentials: true,
       headers: this.headers,
+    })
+
+    this.axios.interceptors.request.use((config) => {
+      const token = Token || localStorage.getItem('userToken')
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
+      return config
     })
   }
 

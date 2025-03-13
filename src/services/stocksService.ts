@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from 'axios'
+import { Token } from './authService'
 import { Location, StockMovement } from '@typess/stocks'
 
 class StocksService {
@@ -13,6 +14,14 @@ class StocksService {
       baseURL: this.BASE_PATH,
       withCredentials: true,
       headers: this.headers,
+    })
+
+    this.axios.interceptors.request.use((config) => {
+      const token = Token || localStorage.getItem('userToken')
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
+      return config
     })
   }
 
