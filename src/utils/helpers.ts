@@ -134,8 +134,8 @@ export const formatDate = (date: string) => {
 
 
 export const formattedNumber = (numArray: number[], secondNumArray?: number[]) => {
-  let sum = numArray.reduce((acc, val) => acc + val, 0)
-  if (secondNumArray) sum = sum - secondNumArray.reduce((acc, val) => acc + val, 0)
+  let sum = numArray[0]
+  if (secondNumArray) sum = sum - secondNumArray[0]
 
   return sum.toLocaleString('en-US', {
     minimumFractionDigits: 2,
