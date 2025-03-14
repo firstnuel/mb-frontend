@@ -60,6 +60,7 @@ const Dashboard = () => {
           trendAmt={formattedNumber(data?.totalSales ?? [], data?.lastTotalSales ?? []) as string}
           trendPct={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? [])}
           up={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) > 0}
+          noChange={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) === 0}
         />
         <ShowBox
           tittleIcon={icons.categories}
@@ -69,6 +70,7 @@ const Dashboard = () => {
           trendAmt={sumNumber(data?.totalProductSales ?? [], data?.lastTotalPdSales ?? [])}
           trendPct={percentageOf(data?.totalProductSales ?? [], data?.lastTotalPdSales ?? [])}
           up={percentageOf(data?.totalProductSales ?? [], data?.lastTotalPdSales ?? []) > 0}
+          noChange={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) === 0}
         />
         <ShowBox
           tittleIcon={icons.customer}
@@ -78,6 +80,7 @@ const Dashboard = () => {
           trendAmt={sumNumber(data?.totalCustomers ?? [], data?.lastTotalCustomers ?? [])}
           trendPct={percentageOf(data?.totalCustomers ?? [], data?.lastTotalCustomers ?? [])}
           up={percentageOf(data?.totalCustomers ?? [], data?.lastTotalPdSales ?? []) > 0}
+          noChange={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) === 0}
         />
         <ShowBox
           tittleIcon={icons.profit}
@@ -87,6 +90,7 @@ const Dashboard = () => {
           trendAmt={formattedNumber(data?.netProfit ?? [], data?.lastNetProfit ?? []) as string}
           trendPct={percentageOf(data?.netProfit ?? [], data?.lastNetProfit ?? [])}
           up={percentageOf(data?.netProfit ?? [], data?.lastNetProfit ?? []) > 0}
+          noChange={percentageOf(data?.totalSales ?? [], data?.lastTotalSales ?? []) === 0}
         />
       </div>
       <div className="mid-body">
