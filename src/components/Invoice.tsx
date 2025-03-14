@@ -134,7 +134,7 @@ const Invoice = ({ sale, hide }: InvoiceProp) => {
                 </ul>
               </div>}
           </div>
-          <div className="barcoder">
+          <div className="barcode barcoder">
             <Barcode value={sale.invRef ?? sale.id} />
           </div>
         </div>
