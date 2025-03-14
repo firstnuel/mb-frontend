@@ -10,7 +10,8 @@ export const useDashboard = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (error || success === 'Sales data fetched successfully' ) {
+    if (error || success === 'Sales data fetched successfully'
+      || success === 'Summary fetched successfully') {
       const timer = setTimeout(() => {
         dispatch(clearError())
       }, 5000)

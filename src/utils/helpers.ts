@@ -144,16 +144,15 @@ export const formattedNumber = (numArray: number[], secondNumArray?: number[]) =
 }
 
 export const sumNumber = (numArray: number[], secondNumArray?: number[]) => {
-  let sum = numArray.reduce((acc, val) => acc + val, 0)
-  if (secondNumArray) sum = sum - secondNumArray.reduce((acc, val) => acc + val, 0)
-
+  let sum = numArray[0]
+  if (secondNumArray) sum = sum - secondNumArray[0]
   return sum.toString()
 }
 
 
 export const percentageOf = (numArray: number[], secondNumArray: number[]): number => {
-  const sum1 = numArray.reduce((acc, val) => acc + val, 0)
-  const sum2 = secondNumArray.reduce((acc, val) => acc + val, 0)
+  const sum1 =  numArray[0]
+  const sum2 = secondNumArray[0]
 
   if (sum1 === 0 && sum2 > 0) {
     return -100
