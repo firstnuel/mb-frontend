@@ -17,13 +17,13 @@ export const useAuth = () => {
 
   // Automatically clear error after 5 seconds
   useEffect(() => {
-    if (error) {
+    if (error || reset) {
       const timer = setTimeout(() => {
         dispatch(clearError())
       }, 5000)
       return () => clearTimeout(timer)
     }
-  }, [error, dispatch])
+  }, [error, dispatch, reset])
 
   // handlers
   const clearErrorHandler = useCallback(() => dispatch(clearError()), [dispatch])

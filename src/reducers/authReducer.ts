@@ -11,7 +11,7 @@ const initialState: AuthState = {
   loading: false,
   error: null,
   registered: null,
-  reset: false,
+  reset: null,
   updated: null
 }
 
@@ -67,6 +67,7 @@ export const passwordReset = createAsyncThunk('auth/passwordReset', async(email:
   if (response.status !== 200) {
     throw new Error(response.data.message)
   }
+  return { reset: response.data.message }
 })
 
 export const passwordUpdate = createAsyncThunk('auth/passwordUpdate', async (passwordData: { passwordData: passwordData, token: string }) => {
@@ -83,6 +84,7 @@ const authSlice = createSlice({
   reducers: {
     clearError: (state) => {
       state.error = null
+      state.reset = null
     },
   },
   extraReducers: (builder) => {
@@ -130,15 +132,14 @@ const authSlice = createSlice({
       state.loading = true
       state.error = null
     })
-    builder.addCase(passwordReset.fulfilled, (state) => {
+    builder.addCase(passwordReset.fulfilled, (state, action) => {
       state.loading = false
       state.error = null
-      state.reset = true
+      state.reset = action.payload.reset
     })
     builder.addCase(passwordReset.rejected, (state, action) => {
       state.loading = false
       state.error = action.error.message ||'Password reset failed, Try again later'
-      state.reset = false
     })
 
     // password update

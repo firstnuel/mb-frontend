@@ -5,7 +5,7 @@ import BackHome from '@components/BackHome'
 import AppNameTag from '@components/AppNameTag'
 import { useField } from '@hooks/useField'
 import Form from 'react-bootstrap/Form'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAuth } from '@hooks/useAuth'
 import icons from '@assets/icons'
 import './index.scss'
@@ -14,15 +14,13 @@ import './index.scss'
 const PasswordResetForm = () => {
 
   const { reset: emailReset, ...email } = useField('email', 'email')
-  const [success, setSuccess] = useState<boolean>(false)
   const { passwordReset, reset, loading, error } = useAuth()
 
   useEffect(() => {
     if (reset) {
-      setSuccess(true)
       emailReset()
     }
-  }, [reset, passwordReset,  emailReset, success])
+  }, [reset, emailReset])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,8 +33,8 @@ const PasswordResetForm = () => {
       <Container className='registerform-container'>
         <AppNameTag tagline='Password Reset' />
         <Form onSubmit={handleSubmit} className="d-grid gap-2">
-          <div className={error? 'error': success? 'success' : 'info'}>
-            {error? error : success? 'Password reset email sent'
+          <div className={error? 'error': reset? 'success' : 'info'}>
+            {error? error : reset? 'Password reset email sent'
               : 'Please enter the email address associated with your account, or the business email if you are the owner.'}
           </div>
           <InputGroup className="mb-3">

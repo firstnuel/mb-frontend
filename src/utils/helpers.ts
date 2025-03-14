@@ -164,8 +164,9 @@ export const percentageOf = (numArray: number[], secondNumArray: number[]): numb
   }
 
   if (sum2 === 0) {
-    return 0  // return 0 if both are 0, or no valid percentage can be calculated
+    return 0
   }
 
-  return (sum1 / sum2) * 100
+  const percentage = (sum1 / sum2) * 100
+  return parseFloat(percentage.toFixed(0))
 }

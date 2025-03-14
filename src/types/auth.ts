@@ -30,7 +30,7 @@ export interface AuthState {
   error: string | null;
   userToken: string | null;
   registered: boolean | null;
-  reset: boolean;
+  reset: string | null;
   updated: boolean | null;
 }
 
