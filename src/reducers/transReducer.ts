@@ -24,7 +24,7 @@ export const fetchSales = createAsyncThunk('trans/fetchSales', async () => {
   if ( response.status !== 'success') {
     throw new Error(response.message)
   }
-  return { sales: response.data, successMsg: response.message }
+  return { sales: response.data as Sale[], successMsg: response.message }
 })
 
 export const fetchSale = createAsyncThunk('trans/fetchSale', async (id: string) => {

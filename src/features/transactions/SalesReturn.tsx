@@ -17,7 +17,7 @@ import NewSaleReturn from './NewReturn'
 
 
 const SalesReturn = () => {
-  const { sales, fetchSales, loading, error,
+  const { salesReturns: sales, fetchSales, loading, error,
     clearError, success, setSale, sale, mainOpt, setSubOpt, } = useTrans()
   const [sort, setSort] = useState({ key: 'Customer Name', dir: 'asc' })
   const [search, setSearch] = useState('')
@@ -162,7 +162,7 @@ const SalesReturn = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={8} className="no-user">No sales found</td>
+                <td colSpan={8} className="no-user">No Returns found</td>
               </tr>
             )}
           </tbody>
