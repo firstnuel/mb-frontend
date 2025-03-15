@@ -1,6 +1,6 @@
 div.main-con-db {
     width: 100dvw;
-    height: 100dvh;
+    height: max-content;
     background-color: var(--light-gray);
     padding: 0 1em;
     overflow-y: auto;
@@ -26,7 +26,7 @@ div.main-con-db {
 
     div.mid-body {
         width: 100%;
-        height: 55dvh;
+        height: 60dvh;
         display: flex;
         gap: .5em;
     }

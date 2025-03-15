@@ -23,7 +23,7 @@ const Transactions = () => {
           <SecOption name='Sales Return' mainOpt={mainOpt} setMainOpt={setMainOpt}/>
         </Container>
         <Container className='sec-show'>
-          {mainOpt === 'Sales'  && <SalesTable />}
+          {mainOpt === 'Sales'  && subOpt !== 'View Sale' && <SalesTable />}
           {mainOpt === 'Invoices'  && subOpt !== 'View Invoice' && <InvoiceTable />}
           {mainOpt === 'Invoices' && subOpt === 'View Invoice' && invoice && <Invoice sale={invoice}/>}
           {mainOpt === 'Sales' && subOpt === 'View Sale'  && sale && <ViewSale/>}

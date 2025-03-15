@@ -67,10 +67,9 @@ const StockForm = () => {
     unitsAvailable: parseInt(unitsAvailable.value as string),
     maxQuantity: parseInt(maxQuantity.value as string),
     minQuantity: parseInt(minQuantity.value as string),
-    thresholdAlert: isChecked,
     costPerUnit: parseInt(costPerUnit.value as string),
+    thresholdAlert: isChecked,
     notes: notes.value as string?? '',
-    totalValue: parseInt(totalValue.value as string),
     locationName: locationName.value as string,
     locationType: selectedLtype as LocationTypes,
     address: address.value as string,
@@ -80,6 +79,7 @@ const StockForm = () => {
 
   if (selectedSupplierId) stockData.supplierId = selectedSupplierId
   if (selectedLocationId) stockData.locationId = selectedLocationId
+  if (totalValue.value) stockData.totalValue= parseInt(totalValue.value as string)
 
   const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -161,7 +161,7 @@ const StockForm = () => {
             </div>
             <div className="costPerUnit">
               <div>
-                Cost Per Unit: <span className="optional">optional</span>
+                Cost Per Unit:
               </div>
               <Form.Control {...costPerUnit} required={false} />
             </div>
@@ -279,10 +279,10 @@ const StockForm = () => {
             <Button variant="primary" type="submit" disabled={loading}>
               {stock
                 ? loading
-                  ? 'Saving'
+                  ? 'Saving...'
                   : 'Save Changes'
                 : loading
-                ? 'Adding'
+                ? 'Adding...'
                 : 'Add stock'}
             </Button>
             {!stock && (

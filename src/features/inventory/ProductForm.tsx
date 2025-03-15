@@ -28,8 +28,8 @@ const ProductForm = ({ product, error }: ProductForm) => {
   const { reset: tagReset, ...productTag } = useField('productTag', 'text')
   const { reset: shortDesReset, ...shortDes } = useField('shortDescription', 'text', product?.shortDescription?? '')
   const { reset: longDesReset, ...longDes } = useField('longDescription', '', product?.longDescription?? '')
-  const { reset: basePriceReset, ...basePrice } = useField('basePrice', 'text', product?.basePrice?? '')
-  const { reset: discountReset, ...discount } = useField('discount', 'text', product?.discount?.toString() ?? '')
+  const { reset: basePriceReset, ...basePrice } = useField('basePrice', 'number', product?.basePrice?? '')
+  const { reset: discountReset, ...discount } = useField('discount', 'number', product?.discount?.toString() ?? '')
   const { reset: colorReset, ...color } = useField('color', 'text', product?.attributes?.color?? '')
   const { reset: sizeReset, ...size } = useField('size', 'number', product?.attributes?.size?? '')
   const { reset: brandReset, ...brand } = useField('brand', 'text', product?.attributes?.brand?? '')
@@ -118,7 +118,7 @@ const ProductForm = ({ product, error }: ProductForm) => {
       size:  parseInt(size.value as string) || 0,
       manufacturer: manufacturer.value,
       dimensions: {
-        length: parseInt(length.value as string) || 0,
+        length: parseInt(length.value as string) || undefined,
         width: parseInt(width.value as string) || 0,
         height: parseInt(height.value as string) || 0,
         weight: parseInt(weight.value as string) || 0
@@ -320,9 +320,9 @@ const ProductForm = ({ product, error }: ProductForm) => {
           <div className="form-btns-div">
             <Button variant="primary" type='submit' disabled={loading}>
               {product ?
-                loading ? 'Saving' : 'Save Changes'
+                loading ? 'Saving...' : 'Save Changes'
                 :
-                loading ? 'Creating' : 'Create Product'}
+                loading ? 'Creating...' : 'Create Product'}
             </Button>
             {!product && <Button variant="danger" onClick={clearForm}>
                 Clear Form

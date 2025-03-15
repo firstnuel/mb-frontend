@@ -1,6 +1,6 @@
 import '@styles/recent-sales.scss'
 import { useTrans } from '@hooks/useTrans'
-import { formatDate } from '@utils/helpers'
+import { cutName, formatDate } from '@utils/helpers'
 
 
 const RecentSale = () => {
@@ -30,7 +30,7 @@ const RecentSale = () => {
             <tr key={idx}>
               <td><div className="number">{String(idx+1).padStart(3, '0')}</div></td>
               <td><div className="date">{formatDate(sale.createdAt)}</div></td>
-              <td><div className='cs-name'>{sale.customer?.name?? '-'}</div></td>
+              <td><div className='cs-name'>{cutName(sale.customer?.name ?? '-', 10)}</div></td>
               <td><div className='cs-name'>{sale.status}</div></td>
               <td><div className='cs-name'>{`${sale.currency} ${sale.totalPrice.toFixed(2)}`}</div></td>
               <td><div className={sale.status === 'COMPLETED' ? 'av up' : 'av down'}>

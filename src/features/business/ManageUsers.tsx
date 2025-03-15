@@ -7,11 +7,12 @@ import { useEffect, useState } from 'react'
 import NewUser from './NewUser'
 import { getLastSeen } from '@utils/helpers'
 import Notify from '@components/Notify'
+import loadImg from '@assets/images/loading-loading-forever.gif'
 import './index.scss'
 
 
 const ManageUsers = () => {
-  const { users, clearError, success, user, error, setSubOpt, fetchUser, mainOpt } = useBusiness()
+  const { users, clearError, success, user, error, setSubOpt, fetchUser, mainOpt, loading } = useBusiness()
   const [show, setShow] = useState(false)
 
   const handleNewUser = () => {
@@ -66,7 +67,7 @@ const ManageUsers = () => {
                   <td>{getLastSeen(user.lastLogin)}</td>
                   <td className='actions'>
                     <div className="cta">
-                      <IconBox src={icons.openField}  onClick={() => fetchUser(user._id)} clName='view'/>
+                      <IconBox src={loading ? loadImg : icons.openField}  onClick={() => fetchUser(user._id)} clName='view'/>
                     </div>
                   </td>
                 </tr>

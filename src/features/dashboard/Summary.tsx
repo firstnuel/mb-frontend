@@ -22,7 +22,7 @@ const Summary = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <div className="summaries">
+      <div className="summarys">
         <div className="totls">
           <div className='name'>Total Products</div>
           <div className='amt'>{products.length}</div>

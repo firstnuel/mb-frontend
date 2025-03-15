@@ -105,7 +105,7 @@ const SalesTable = () => {
   const csvHeaders = header.map((h) => ({ label: h, key: hFields[h] }))
 
   return (
-    <>
+    <div>
       <Notify clearErrFn={clearError} success={success} error={error} />
       <div className="topper">
         <div className="top-menu">
@@ -164,7 +164,7 @@ const SalesTable = () => {
           </tbody>
         </Table>
       </div>
-    </>
+    </div>
   )
 }
 

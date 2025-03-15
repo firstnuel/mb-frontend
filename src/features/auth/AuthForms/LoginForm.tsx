@@ -34,6 +34,21 @@ const LoginForm = () => {
   }, [emailReset, userToken, nameReset, passwordReset, navigate,])
 
 
+  const handleDemoSubmit = async () => {
+
+    const formData = {
+      email: import.meta.env.VITE_EMAIL,
+      username:import.meta.env.VITE_USERNAME,
+      password: import.meta.env.VITE_PASSWORD,
+    }
+    try {
+      await login(formData)
+    } catch (err) {
+      setValidationError((err as Error).message)
+    }
+  }
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setValidationError(null)
@@ -43,7 +58,6 @@ const LoginForm = () => {
       username: username.value,
       password: password.value
     }
-
     try {
       const userData: LoginData = LoginFormSchema.parse(formData)
       localStorage.setItem('email', email.value as string)
@@ -89,6 +103,11 @@ const LoginForm = () => {
 
           <Button variant="primary" type="submit" disabled={loading} size="lg" className='formButton'>
             {loading? 'Loading...' : 'Login'}
+          </Button >
+          <Button variant="secondary"
+            onClick={handleDemoSubmit}
+            disabled={loading} size="lg" className='formButton'>
+            {loading? 'Loading...' : 'Use Demo Account'}
           </Button >
         </Form>
         <div className='forgot-password'>
