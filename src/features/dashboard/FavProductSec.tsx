@@ -1,6 +1,7 @@
 import '@styles/fav-prd.scss'
 import testImage from '@assets/images/file.png'
 import { Product } from '@typess/pos'
+import { cutName } from '@utils/helpers'
 
 interface PdProps {
   pddata: { product: Product; amountSold: number; }[] | null;
@@ -32,7 +33,7 @@ const FavProductSection = ({ pddata }: PdProps) => (
                 </div>
               </td>
               <td>
-                <div className="name-av">{product.productName}</div>
+                <div className="name-av">{cutName(product.productName, 20)}</div>
               </td>
               <td>
                 <div className='amt'>{amountSold}</div>

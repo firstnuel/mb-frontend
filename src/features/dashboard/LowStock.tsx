@@ -1,6 +1,7 @@
 import '@styles/fav-prd.scss'
 import testImage from '@assets/images/file.png'
 import { useStocks } from '@hooks/useStocks'
+import { cutName } from '@utils/helpers'
 
 
 const LowStock = () => {
@@ -32,7 +33,7 @@ const LowStock = () => {
               </td>
               <td>
                 <div className="pd-name-av">
-                  <div className="pd-name">{stock.product?.name}</div>
+                  <div className="pd-name">{cutName(stock.product?.name?? '-', 20)}</div>
                   <div className="av down">low stock</div>
                 </div>
               </td>
