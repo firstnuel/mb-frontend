@@ -14,6 +14,7 @@ import { useAuth } from '@hooks/useAuth'
 import Notify from '@components/Notify'
 import { useBusiness } from '@hooks/useBusiness'
 import ConfirmDeletePd from './ConfirmDeletePd'
+import { usePos } from '@hooks/usePos'
 
 
 interface ProductForm {
@@ -54,6 +55,7 @@ const ProductForm = ({ product, error }: ProductForm) => {
     loading, createProduct,
     setMainOpt, setSubOpt,
     subOpt, mainOpt } = useInv()
+  const { fetchProducts } = usePos()
 
   const { user } = useAuth()
 
@@ -142,6 +144,7 @@ const ProductForm = ({ product, error }: ProductForm) => {
     createProduct(newProductData as unknown as IProduct)
     if (success) {
       resetOpt()
+      fetchProducts()
     }
   }
 
