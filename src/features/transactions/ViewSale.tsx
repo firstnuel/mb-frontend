@@ -39,8 +39,8 @@ const ViewSale = () => {
       <Container className='edit-con'>
         <FieldDisplay fieldName='Customer Name' value={sale?.customer?.name?? '-'}  />
         <FieldDisplay fieldName="Initiated By" value={sale?.initiatedBy?.name ?? '-'} />
-        {sale?.completedBy &&
-        <FieldDisplay fieldName="Initiated By" value={sale?.completedBy?.name ?? '-'} />}
+        {sale?.completedBy?.name &&
+        <FieldDisplay fieldName="Completed By" value={sale?.completedBy?.name ?? '-'} />}
         <FieldDisplay fieldName="Subtotal Amount" value={`${sale?.subtotalAmount ?? 0} ${sale?.currency ?? '-'}`} />
         <FieldDisplay fieldName="Tax Amount" value={`${sale?.taxAmount ?? 0} ${sale?.currency ?? '-'}`} />
         <FieldDisplay fieldName="Tax Rate" value={`${sale?.taxRate ?? 0}%`} />
