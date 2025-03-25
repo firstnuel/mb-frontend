@@ -19,9 +19,9 @@ const Contacts = () => {
           <SecOption name='Suppliers' mainOpt={mainOpt} setMainOpt={setMainOpt}/>
         </Container>
         <Container className='sec-show'>
-          {mainOpt === 'Customers' && subOpt === 'None' && <ManageCustomers />}
+          {mainOpt === 'Customers' && subOpt !== 'Edit Customer' && <ManageCustomers />}
           {mainOpt === 'Customers' && subOpt === 'Edit Customer' && <EditCustomer />}
-          {mainOpt === 'Suppliers' && subOpt === 'None' && <ManageSuppliers />}
+          {mainOpt === 'Suppliers' && subOpt !== 'Edit Supplier' && <ManageSuppliers />}
           {mainOpt === 'Suppliers' && subOpt === 'Edit Supplier' && <EditSupplier />}
         </Container>
       </div>

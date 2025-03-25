@@ -106,8 +106,8 @@ const ProductForm = ({ product, error }: ProductForm) => {
     productType: selectedType,
     businessId: product?.businessId,
     basePrice: parseInt(basePrice.value as string),
-    discount: parseInt(discount.value as string),
-    salePrice: parseInt(basePrice.value as string) - parseInt(discount.value as string),
+    discount: parseInt(discount.value as string) || 0,
+    salePrice: parseInt(basePrice.value as string) - parseInt(discount.value as string) || 0,
     unit: selectedUnit,
     longDescription: longDes.value,
     shortDescription: shortDes.value,
@@ -143,8 +143,8 @@ const ProductForm = ({ product, error }: ProductForm) => {
 
     createProduct(newProductData as unknown as IProduct)
     if (success) {
-      resetOpt()
       fetchProducts()
+      resetOpt()
     }
   }
 

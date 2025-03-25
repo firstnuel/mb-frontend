@@ -26,13 +26,13 @@ const StocksMangement = () => {
           <SecOption name='Locations' mainOpt={mainOpt} setMainOpt={setMainOpt}/>
         </Container>
         <Container className='sec-show'>
-          {mainOpt === 'Stocks' && subOpt === 'None' && <StocksTable />}
-          {mainOpt === 'Low Stocks' && subOpt === 'None' && <LowStockList/> }
-          {mainOpt === 'Movements' && subOpt === 'None' && <StockMovements/> }
-          {mainOpt === 'Locations' && subOpt === 'None' && <LocationTable/> }
+          {mainOpt === 'Stocks' && <StocksTable />}
+          {mainOpt === 'Low Stocks' && <LowStockList/> }
+          {mainOpt === 'Movements' && <StockMovements/> }
+          {mainOpt === 'Locations' && subOpt !== 'Edit Location'  && <LocationTable/> }
           {mainOpt === 'Locations' && subOpt === 'Edit Location' && <EditLocation/> }
-          {mainOpt === 'Stocks By Supplier' && subOpt === 'None' && <ViewSuppliers/> }
-          {mainOpt === 'Stocks By Supplier' && subOpt === 'BySupplier List' && <StocksBySupplier/> }
+          {mainOpt === 'Stocks By Supplier' && subOpt !== 'BySupplier List' && <ViewSuppliers/> }
+          {mainOpt === 'Stocks By Supplier' &&  subOpt === 'BySupplier List' && <StocksBySupplier/> }
         </Container>
       </div>
     </div>
