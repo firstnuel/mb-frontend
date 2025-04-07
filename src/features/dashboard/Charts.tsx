@@ -8,9 +8,10 @@ interface ChartProps {
   currentData: number[];
   lastData: number[];
   currency?: string
+  amountData: string
 }
 
-const SalesChart = ({ period, currentData, lastData, currency }: ChartProps) => {
+const SalesChart = ({ period, currentData, lastData, currency, amountData }: ChartProps) => {
   // Generating data for the chart with dynamic keys based on period
   const data = currentData.map((current, index) => ({
     name: `Period ${index + 1}`,
@@ -45,7 +46,7 @@ const SalesChart = ({ period, currentData, lastData, currency }: ChartProps) => 
         <div className="b-childs">
           <div className="tttl">Amount</div>
           <div className="amt-cur">
-            <div className="amt">{sumNumber(currentData?? [])}</div>
+            <div className="amt">{amountData}</div>
             <div className="cur">{currency?? 'USD'}</div>
           </div>
         </div>
@@ -55,7 +56,7 @@ const SalesChart = ({ period, currentData, lastData, currency }: ChartProps) => 
             <div className="amt">
               <span>&#43;</span>{sumNumber(currentData?? [], lastData?? [])}
             </div>
-            <div className="cur">{currency?? 'USD'}</div>
+            <div className="cur">Items</div>
           </div>
         </div>
         <div className="b-childs">

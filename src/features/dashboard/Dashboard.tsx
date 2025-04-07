@@ -98,6 +98,7 @@ const Dashboard = () => {
           currentData={data?.totalProductSales ?? []}
           lastData={data?.lastTotalPdSales ?? []}
           currency={business?.currency?? 'USD'}
+          amountData={formattedNumber(data?.totalSales ?? []) as string}
         />
         <FavProductSection pddata={data?.highestSellingProduct?? null} />
       </div>
