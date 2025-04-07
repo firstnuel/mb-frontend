@@ -109,7 +109,7 @@ const ProductBox = ({ show, onHide, product }: ProductBoxPrpos) => {
           onClick={handleCart}
           disabled={(product.stock?.unitsAvailable ?? 0) < 1}
         >
-          {`Add to cart $${product.salePrice.toFixed(2)}`}</Button>
+          {`Add to cart ${getCurrencySymbol(business?.currency?? 'USD')}${product.salePrice.toFixed(2)}`}</Button>
       </Modal.Footer>
     </Modal>
   )
