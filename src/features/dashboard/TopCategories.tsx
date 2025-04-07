@@ -15,10 +15,8 @@ interface TcProps {
 
 const TopCategories = ({ catData }: TcProps) => {
 
-
-
   const data = {
-    labels: catData.map(item => item.category),
+    labels: catData.slice(0, 3).map(item => item.category),
     datasets: [
       {
         label: 'Product Sales',
