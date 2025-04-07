@@ -15,8 +15,9 @@ interface TcProps {
 
 const TopCategories = ({ catData }: TcProps) => {
 
+  catData = catData.length > 3 ? catData.slice(0, 3) : catData
   const data = {
-    labels: catData.slice(0, 3).map(item => item.category),
+    labels: catData.map(item => item.category),
     datasets: [
       {
         label: 'Product Sales',
